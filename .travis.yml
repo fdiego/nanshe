@@ -29,6 +29,12 @@ install:
    - conda create -n nanshenv python=$TRAVIS_PYTHON_VERSION
    - source activate nanshenv
    - conda install --use-local nanshe==$VERSION
+   # Install DRMAA with Python support.
+   - .travis_scripts/install_sge.sh
+   - export SGE_ROOT=/var/lib/gridengine
+   - export SGE_CELL=default
+   - export DRMAA_LIBRARY_PATH=/usr/lib/libdrmaa.so.1.0
+   - pip install drmaa
    # Install sphinx 1.3.1 and friends to build documentation.
    # Install coverage and coveralls to generate and submit test coverage results for coveralls.io.
    # Also, install docstring-coverage to get information about documentation coverage.
@@ -86,4 +92,4 @@ env:
    global:
        secure: gWMpQYLs36C4X+GQ6cqiXn1K7ZMwkGGJaCvLd8DTCWxGclZeY2/+7P1eeIyo8sGz2bmzHGHbGqoZ3Q02+dSy20qf/WXwwNdjbF7d/JOL94cCYUHZuNGOOYVrq1VHFG+3j3QOijnsc4TPlxmI1ov3urHnlplEaU5PiyIEnzdY0EY=
 # Use container format for TravisCI to avoid termination due to insufficient resources.
-sudo: false
+#sudo: false
