@@ -74,6 +74,7 @@ class TestSpamsSandbox(object):
 
         self.g = self.g.transpose()
         d = d.transpose()
+        d = numpy.ascontiguousarray(d)
 
         assert (self.g.shape == d.shape)
 
@@ -125,6 +126,7 @@ class TestSpamsSandbox(object):
 
         self.g3 = self.g3.transpose()
         d3 = d3.transpose()
+        d3 = numpy.ascontiguousarray(d3)
 
         assert (self.g3.shape == d3.shape)
 
@@ -170,6 +172,7 @@ class TestSpamsSandbox(object):
 
         self.g = self.g.transpose()
         d = d.transpose()
+        d = numpy.ascontiguousarray(d)
 
         assert (self.g.shape == d.shape)
 
@@ -216,6 +219,7 @@ class TestSpamsSandbox(object):
 
         self.g3 = self.g3.transpose()
         d3 = d3.transpose()
+        d3 = numpy.ascontiguousarray(d3)
 
         assert (self.g3.shape == d3.shape)
 
@@ -479,6 +483,7 @@ class TestSpamsSandbox(object):
 
         self.g = self.g.transpose()
         d = d.transpose()
+        d = numpy.ascontiguousarray(d)
 
         assert (self.g.shape == d.shape)
 
@@ -525,6 +530,7 @@ class TestSpamsSandbox(object):
 
         self.g3 = self.g3.transpose()
         d3 = d3.transpose()
+        d3 = numpy.ascontiguousarray(d3)
 
         assert (self.g3.shape == d3.shape)
 

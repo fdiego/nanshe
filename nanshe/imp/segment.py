@@ -816,7 +816,7 @@ def generate_dictionary(new_data, **parameters):
     # Fix dictionary so that the first index will be the particular image.
     # The rest will be the shape of an image (same as input shape).
     new_dictionary = new_dictionary.transpose()
-    new_dictionary = numpy.asarray(new_dictionary, dtype=new_data.dtype.type)
+    new_dictionary = numpy.ascontiguousarray(new_dictionary, dtype=new_data.dtype.type)
     new_dictionary = new_dictionary.reshape(
         (parameters["spams.trainDL"]["K"],) + new_data.shape[1:]
     )
