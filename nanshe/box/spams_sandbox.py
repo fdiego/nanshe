@@ -91,12 +91,12 @@ def call_multiprocessing_queue_spams_trainDL(*args, **kwargs):
     """
 
     # Only necessary for dealing with SPAMS
-    import multiprocessing
+    import multiprocessing as mp
 
-    out_queue = multiprocessing.Queue()
+    out_queue = mp.Queue()
 
     queue_args = (out_queue,) + args
-    p = multiprocessing.Process(
+    p = mp.Process(
         target=run_multiprocessing_queue_spams_trainDL,
         args=queue_args,
         kwargs=kwargs
@@ -243,7 +243,7 @@ def call_multiprocessing_array_spams_trainDL(X, *args, **kwargs):
     """
 
     # Only necessary for dealing with SPAMS
-    import multiprocessing
+    import multiprocessing as mp
 
     # Just to make sure this exists in the new process. Shouldn't be necessary.
     import numpy
@@ -258,9 +258,11 @@ def call_multiprocessing_array_spams_trainDL(X, *args, **kwargs):
     )
 
     # Create a shared array to contain X
-    X_array = multiprocessing.Array(X_array_ctype,
-                                    X.size,
-                                    lock=False)
+    X_array = mp.Array(
+        X_array_ctype,
+        X.size,
+        lock=False
+    )
 
     # Copy over the contents of X.
     X_array_numpy = numpy.frombuffer(
@@ -279,14 +281,14 @@ def call_multiprocessing_array_spams_trainDL(X, *args, **kwargs):
     )
 
     # Create a shared array to contain the result
-    result_array = multiprocessing.Array(
+    result_array = mp.Array(
         result_array_ctype,
         numpy.product(result_array_type._shape_),
         lock=False
     )
 
 
-    p = multiprocessing.Process(
+    p = mp.Process(
         target=run_multiprocessing_array_spams_trainDL,
         args=(result_array_type, result_array, X_array_type, X_array,) + args,
         kwargs=kwargs
