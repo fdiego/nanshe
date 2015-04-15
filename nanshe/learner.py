@@ -28,7 +28,7 @@ __date__ = "$Apr 09, 2014 16:00:40 EDT$"
 import os
 import json
 import itertools
-import multiprocessing
+import multiprocessing as mp
 import subprocess
 import time
 
@@ -216,7 +216,7 @@ def generate_neurons_a_block(input_filename, output_filename, debug=False, **par
 
 
 @prof.log_call(trace_logger)
-def generate_neurons_blocks(input_filename, output_filename, num_processes=multiprocessing.cpu_count(), block_shape=None, num_blocks=None, half_window_shape=None, half_border_shape=None, use_drmaa=False, num_drmaa_cores=16, debug=False, **parameters):
+def generate_neurons_blocks(input_filename, output_filename, num_processes=mp.cpu_count(), block_shape=None, num_blocks=None, half_window_shape=None, half_border_shape=None, use_drmaa=False, num_drmaa_cores=16, debug=False, **parameters):
     # TODO: Move this function into a new module with its own command line interface.
     # TODO: Heavy refactoring required on this function.
 
