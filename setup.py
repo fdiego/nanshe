@@ -41,7 +41,8 @@ elif sys.argv[1] == "bdist_conda":
         "spams",
         "rank_filter",
         "pyqt",
-        "volumina"
+        "volumina",
+        "ruffus"
     ]
 
     install_requires = [
@@ -59,7 +60,8 @@ elif sys.argv[1] == "bdist_conda":
         "spams",
         "rank_filter",
         "pyqt",
-        "volumina"
+        "volumina",
+        "ruffus"
     ]
 
     tests_require = [
